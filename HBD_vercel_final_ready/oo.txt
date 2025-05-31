@@ -1,0 +1,307 @@
+html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday</title>
+  <link rel="stylesheet" href="style.css"> <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/typeit@8.7.1/dist/index.umd.js"></script>
+</head>
+<body>
+  <audio src="birthday.mp3" id="linkmp3" class="sembunyi"></audio>
+    <div id="bodyblur" style="opacity: 0;">
+    <img src="images/Valentine-Surprize.png" id="wallpaper" style="transform: scale(1);">
+  </div>
+
+  <div id="Content" style="opacity: 1; margin-top: 16vh;">
+    <div id="kadoIn" style="display: block; text-align: center;">
+      <img src="images/Valentine-Surprise.png" alt="Open Gift Button" style="width: 150px;">
+    </div>
+    <p id="ket" style="display: block; text-align: center; font-style: italic; color: black; margin-top: 5px;">
+      Open the gift, cutie:3
+    </p>
+    <div class="kumpulanstiker" style="text-align: center; margin-top: 30px;">
+      <img src="images/mochi-blue-roses.gif" id="fotostiker" style="width: 100px;">
+      <img src="images/bunga.gif" id="fotostiker1" style="width: 100px;">
+      <img src="images/pandacoklat.gif" id="fotostiker2" style="width: 100px;">
+      <img src="images/milk-and-mocha.gif" id="fotostiker3" style="width: 100px;">
+      <img src="images/emawh.gif" id="fotostiker4" style="width: 100px;">
+      <img src="images/pandacoklat.gif" id="fotostiker5" style="width: 100px;">
+    </div>
+    <p id="halo" style="text-align:center;">Happy Birthday, f!</p>
+    <blockquote id="bq" style="text-align: center;">
+      <p id="kalimat">Happy Birthday, gorgeous! Today is all about celebrating you.</p>
+      <p id="pesan1">Tap here for your birthday surprise! 🎉</p>
+      <ul id="kolombaru" style="list-style: none; display: inline-block; padding: 0;">
+        <li id="lv1">🎂</li>
+        <li id="lv2">🎁</li>
+        <li id="lv3">🥳</li>
+        <li id="lv4">💖</li>
+      </ul>
+      <p id="pesan2">You shine brighter every year! ✨</p>
+      <p id="pesan3">Do you know what makes today extra special?</p>
+      <p id="pesan4"></p>
+      <p id="pesan5"></p>
+      <p id="pesan6"></p>
+      <p id="opsL">Tap to continue the celebration!</p>
+    </blockquote>
+    <div id="Tombol" style="text-align: center; margin-top: 20px;">
+      <a id="By" href="#" style="text-decoration: none; font-size: 18px;">💌 Next</a>
+    </div>
+    <div id="pesanditolak" style="display: none;">
+      <img id="stikerditolak" src="images/weee.gif" style="width: 120px;">
+      <p id="kataditolak">Oops! You can’t skip this birthday magic.</p>
+    </div>
+  </div>
+
+  <script src="a.js"></script> <script src="index.umd.js"></script> </body>
+</html>
+
+
+
+
+
+a.js
+const linkmp3 = document.getElementById("linkmp3");
+const kadoIn = document.getElementById("kadoIn");
+const wallpaper = document.getElementById("wallpaper");
+const ket = document.getElementById("ket");
+const Content = document.getElementById("Content");
+const halo = document.getElementById("halo");
+const bq = document.getElementById("bq");
+const kalimat = document.getElementById("kalimat");
+const pesan1 = document.getElementById("pesan1");
+const pesan2 = document.getElementById("pesan2");
+const pesan3 = document.getElementById("pesan3");
+const pesan4 = document.getElementById("pesan4");
+const pesan5 = document.getElementById("pesan5");
+const pesan6 = document.getElementById("pesan6");
+const opsL = document.getElementById("opsL");
+const Tombol = document.getElementById("Tombol");
+const By = document.getElementById("By");
+const pesanditolak = document.getElementById("pesanditolak");
+
+// Sticker elements
+const fotostiker = document.getElementById("fotostiker");
+const fotostiker1 = document.getElementById("fotostiker1");
+const fotostiker2 = document.getElementById("fotostiker2");
+const fotostiker3 = document.getElementById("fotostiker3");
+const fotostiker4 = document.getElementById("fotostiker4");
+const fotostiker5 = document.getElementById("fotostiker5");
+
+// Level elements
+const lv1 = document.getElementById("lv1");
+const lv2 = document.getElementById("lv2");
+const lv3 = document.getElementById("lv3");
+const lv4 = document.getElementById("lv4");
+
+let fungsiAwal = 0;
+let audio = new Audio(linkmp3.src);
+let clickCount = 0; // "Next" button par click ki sankhya ko track karne ke liye
+
+// Shuruat mein sabhi message elements aur stickers ko chupa do
+kalimat.style.display = "none";
+pesan1.style.display = "none";
+pesan2.style.display = "none";
+pesan3.style.display = "none";
+pesan4.style.display = "none";
+pesan5.style.display = "none";
+pesan6.style.display = "none";
+opsL.style.display = "none";
+Tombol.style.display = "none";
+pesanditolak.style.display = "none";
+
+// Stickers hidden initially
+fotostiker.style.display = "none";
+fotostiker1.style.display = "none";
+fotostiker2.style.display = "none";
+fotostiker3.style.display = "none";
+fotostiker4.style.display = "none";
+fotostiker5.style.display = "none";
+
+// Levels hidden initially or set to default style
+lv1.style.backgroundColor = "transparent";
+lv2.style.backgroundColor = "transparent";
+lv3.style.backgroundColor = "transparent";
+lv4.style.backgroundColor = "transparent";
+
+
+kadoIn.onclick = async function () {
+  if (fungsiAwal === 0) {
+    audio.play();
+    fungsiAwal = 1;
+    kadoIn.style = "transition:all .8s ease;transform:scale(10);opacity:0";
+    wallpaper.style = "transform: scale(1.5);";
+    ket.style = "display:none";
+    setTimeout(() => {
+      Swal.fire({
+        title: "What's your beautiful name?",
+        input: "text",
+        inputValidator: (value) => {
+          if (!value || value.length > 12) return "Please enter a short name!";
+        }
+      }).then(result => {
+        if (result.value) {
+          halo.innerText = "Happy Birthday, " + result.value + "!";
+          // Naam daalne ke baad initial birthday message dikhao
+          kalimat.style.display = "block"; // Original message dikhao
+          Tombol.style.display = "block"; // "Next" button dikhao
+          // Pehla sticker dikhao jab naam daal de
+          fotostiker.style.display = "block"; // mochi-blue-roses.gif
+        }
+      });
+    }, 500);
+  }
+};
+
+By.onclick = function() {
+  clickCount++;
+  switch(clickCount) {
+    case 1:
+      kalimat.style.display = "none"; // Original message chupa do
+      pesan1.style.display = "block"; // Pehla naya message dikhao
+      lv1.style.backgroundColor = "#ff7272"; // Level 1 highlight
+      fotostiker.style.display = "none"; // Purana sticker chupa do
+      fotostiker1.style.display = "block"; // Naya sticker dikhao (bunga.gif)
+      break;
+    case 2:
+      pesan1.style.display = "none";
+      pesan2.style.display = "block";
+      lv2.style.backgroundColor = "#ff7272"; // Level 2 highlight
+      fotostiker1.style.display = "none";
+      fotostiker2.style.display = "block"; // pandacoklat.gif
+      break;
+    case 3:
+      pesan2.style.display = "none";
+      pesan3.style.display = "block";
+      lv3.style.backgroundColor = "#ff7272"; // Level 3 highlight
+      fotostiker2.style.display = "none";
+      fotostiker3.style.display = "block"; // milk-and-mocha.gif
+      break;
+    case 4:
+      pesan3.style.display = "none";
+      pesan4.innerText = "It's because it's your special day, filled with joy!";
+      pesan4.style.display = "block";
+      fotostiker3.style.display = "none";
+      fotostiker4.style.display = "block"; // emawh.gif
+      break;
+    case 5:
+      pesan4.style.display = "none";
+      pesan5.innerText = "May your day be as beautiful as you are, darling!";
+      pesan5.style.display = "block";
+      fotostiker4.style.display = "none";
+      fotostiker5.style.display = "block"; // pandacoklat.gif (again)
+      break;
+    case 6:
+      pesan5.style.display = "none";
+      pesan6.innerText = "Wishing you endless happiness and success! ❤️";
+      pesan6.style.display = "block";
+      lv4.style.backgroundColor = "#ff7272"; // Level 4 highlight
+      fotostiker5.style.display = "none";
+      // Yahan aap koi final sticker dikha sakte ho, ya sab chupa sakte ho.
+      break;
+    case 7:
+      pesan6.style.display = "none";
+      opsL.style.display = "block"; // "Tap to continue the celebration!" dikhao
+      By.innerText = "🎉 View Your Gallery 🎉"; // Gallery ke liye button text change karo
+      break;
+    case 8:
+      window.location.href = "https://anubhavboyz.github.io/forpic/index.html"; // Apni photo gallery par redirect karo
+      break;
+    default:
+      // Agar aap gallery ke baad wapas loop karna chahte hain ya kuch aur karna chahte hain
+      break;
+  }
+};
+
+
+
+
+
+style.css
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  /* background property ko smooth gradient ke liye adjust kiya gaya */
+  background: linear-gradient(to bottom, #ffc0cb, #ff69b4); /* Light pink to Hot pink */
+  overflow-x: hidden;
+  text-align: center;
+  min-height: 100vh; /* Minimum height for full page background */
+  display: flex; /* Flexbox for vertical centering */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* GIF Stickers ke liye general style, ab By default hidden rahenge aur JS se dikhenge */
+.kumpulanstiker img {
+  display: none; /* By default hidden, JS se control honge */
+  margin: 10px auto; /* Centered with some margin */
+  width: 100px; /* Ya jo size aap chahte hain, default 100px rakha hai */
+  height: auto;
+}
+
+/* Levels (kolombaru li) ke liye styling */
+#kolombaru {
+  margin-top: 20px; /* Thodi space upar se */
+  display: flex; /* Levels ko side-by-side rakhne ke liye */
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  list-style: none;
+}
+
+#kolombaru li {
+  display: inline-block;
+  width: 30px; /* Chhota square */
+  height: 30px;
+  line-height: 30px;
+  border-radius: 50%; /* Circle shape */
+  background-color: #fdd; /* Default light pink color for inactive level */
+  color: #ff217de0; /* Text color */
+  font-weight: bold;
+  margin: 0 5px; /* Spacing between circles */
+  transition: background-color 0.3s ease; /* Smooth transition for color change */
+}
+
+/* Kado (gift box) aur ket (Open the gift) ke liye bhi thoda styling add kiya */
+#kadoIn img {
+    width: 150px; /* Size adjust kiya, original me bhi itna hi tha */
+    height: auto;
+    transition: all .8s ease; /* Animation smoothly transition ke liye */
+}
+
+#ket {
+    font-size: 1.1em; /* Thoda bada font size */
+    color: #333; /* Darker color for readability */
+    margin-top: 10px;
+}
+
+#halo {
+    font-size: 1.8em; /* Title ka size */
+    font-weight: bold;
+    color: #ff217de0;
+    margin-bottom: 20px;
+}
+
+#bq p {
+    font-size: 1.2em; /* Message ka size */
+    margin-bottom: 10px;
+    color: #555;
+}
+
+#Tombol #By {
+    background-color: #ff217de0;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+#Tombol #By:hover {
+    transform: translateY(-2px);
+    background-color: #e01b6e;
+}

@@ -1,0 +1,160 @@
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to bottom, #f478ee, #ff69b4);
+  overflow-x: hidden;
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* GIF Stickers styling */
+.kumpulanstiker img {
+  display: none;
+  margin: 10px auto;
+  width: 100px;
+  height: auto;
+}
+
+/* Levels styling */
+#kolombaru {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  list-style: none;
+}
+
+#kolombaru li {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  line-height: 35px;
+  border-radius: 50%;
+  background-color: rgba(255, 221, 221, 0.3);
+  color: #ff217de0;
+  font-weight: bold;
+  font-size: 16px;
+  margin: 0 8px;
+  transition: all 0.4s ease;
+  border: 2px solid transparent;
+  cursor: pointer; /* Make it clickable */
+  user-select: none; /* Prevent text selection */
+}
+
+/* Hover effect for emojis */
+#kolombaru li:hover {
+  background-color: rgba(255, 114, 114, 0.2);
+  transform: scale(1.1);
+}
+
+/* Active emoji - currently highlighted */
+#kolombaru li.current {
+  background-color: #ff7272 !important;
+  transform: scale(1.2) !important;
+  box-shadow: 0 0 15px rgba(255, 114, 114, 0.6) !important;
+  border: 2px solid #ff4757 !important;
+  animation: pulse 0.6s ease-in-out;
+}
+
+/* Completed emoji - already done */
+#kolombaru li.completed {
+  background-color: #4CAF50 !important;
+  color: white !important;
+  transform: scale(1.0);
+  border: 2px solid #45a049 !important;
+}
+
+/* Pulse animation for current emoji */
+@keyframes pulse {
+  0% { transform: scale(1.2); }
+  50% { transform: scale(1.4); }
+  100% { transform: scale(1.2); }
+}
+
+/* Gift box styling */
+#kadoIn img {
+    width: 150px;
+    height: auto;
+    transition: all .8s ease;
+    cursor: pointer; /* Added cursor pointer */
+}
+
+#kadoIn:hover img {
+    transform: scale(1.1); /* Added hover effect */
+}
+
+#ket {
+    font-size: 1.1em;
+    color: #333;
+    margin-top: 10px;
+}
+
+#halo {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #ff217de0;
+    margin-bottom: 20px;
+}
+
+#bq p {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+/* FIXED BUTTON STYLING - This was the main issue */
+#Tombol {
+    text-align: center;
+    margin-top: 20px;
+    z-index: 999; /* Added z-index to ensure button stays on top */
+    position: relative; /* Added position relative */
+}
+
+#Tombol #By {
+    display: inline-block; /* Changed from default to inline-block */
+    background-color: #ff217de0;
+    color: white;
+    padding: 12px 25px; /* Increased padding for better click area */
+    border-radius: 25px;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    text-decoration: none;
+    cursor: pointer; /* Added cursor pointer */
+    font-size: 16px; /* Fixed font size */
+    border: none; /* Remove any border */
+    outline: none; /* Remove outline */
+    user-select: none; /* Prevent text selection */
+}
+
+#Tombol #By:hover {
+    transform: translateY(-2px);
+    background-color: #e01b6e;
+    box-shadow: 0 6px 8px rgba(0,0,0,0.15); /* Enhanced shadow on hover */
+}
+
+#Tombol #By:active {
+    transform: translateY(0); /* Button press effect */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Additional fixes for better responsiveness */
+@media (max-width: 768px) {
+    #Tombol #By {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+    
+    .kumpulanstiker img {
+        width: 80px;
+    }
+    
+    #halo {
+        font-size: 1.5em;
+    }
+}
